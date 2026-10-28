@@ -3,12 +3,16 @@ package daemonthreads;
 public class UserThread {
 
     public static void main(String[] args) {
-        Thread hilo=new Thread(new Hilo(3),"Hilo Usuario");
+        int tiempoEnSegundos=3;
 
-        hilo.start();
+        Thread hiloTemporizador=new Thread(new Temporizador(tiempoEnSegundos),"Hilo Usuario");
+
+        hiloTemporizador.start();
 
         try {
-            hilo.join();
+            hiloTemporizador.join();
+            System.out.println("Han pasado unos " + tiempoEnSegundos + " segundos");
+
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -16,27 +20,27 @@ public class UserThread {
         System.out.println("Hilos de usuario finalizados y por tanto, termina el hilo principal tras realizar el join");
 
     }
-    public static class Hilo implements Runnable
+    public static class Temporizador implements Runnable
     {
-        private int segundos=0;
+        private int cuentaSegundos=0;
 
-        public Hilo(int segundos)
+        public Temporizador(int cuentaSegundos)
         {
-            setSegundos(segundos);
+            setSegundos(cuentaSegundos);
         }
 
-        private void setSegundos(int segundos)
+        private void setSegundos(int cuentaSegundos)
         {
-            if (segundos<=0)
+            if (cuentaSegundos<=0)
                 throw new IllegalArgumentException("ERROR: El número de segundos no puede ser negativo.");
 
-            this.segundos=segundos;
+            this.cuentaSegundos=cuentaSegundos;
 
         }
         @Override
         public void run() {
 
-            for (int i=0; i<segundos;i++)
+            for (int i=0; i<cuentaSegundos;i++)
             {
                 try {
                     System.out.println("Soy la hebra " + Thread.currentThread().getName() + ". Me voy a dormir durante un segundo.");

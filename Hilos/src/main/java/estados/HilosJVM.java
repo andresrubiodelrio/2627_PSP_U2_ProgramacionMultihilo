@@ -47,17 +47,18 @@ public class HilosJVM {
         {
             for(int i=0;i<10;i++)
             {
+                System.out.println("Runner1: " + i );
                 try
                 {
-                    Thread.sleep(1000);
-                    //Thread.sleep(100);
+                    //Thread.sleep(1000);
+                    Thread.sleep(100);
                 }
                 catch (InterruptedException e)
                 {
                     System.out.println(e.getMessage());
                 }
 
-                System.out.println("Runner1: " + i );
+
             }
         }
     }
@@ -70,6 +71,8 @@ public class HilosJVM {
         {
             for(int i=0;i<10;i++)
             {
+                System.out.println("Runner2: " + i );
+
                 try
                 {
                     Thread.sleep(1000);
@@ -79,7 +82,6 @@ public class HilosJVM {
                     System.out.println(e.getMessage());
                 }
 
-                System.out.println("Runner2: " + i );
 
             }
         }

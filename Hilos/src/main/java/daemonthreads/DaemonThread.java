@@ -4,16 +4,17 @@ public class DaemonThread {
 
     public static void main(String[] args) {
 
-        Thread hiloDemonio=new Thread(new Hilo(10), "Hilo Demonio");
-        Thread hilo=new Thread(new Hilo(3), "Hilo Usuario");
+        Thread hiloUsuario=new Thread(new Temporizador(3), "Hilo Usuario");
+        Thread hiloDemonio=new Thread(new Temporizador(10), "Hilo Demonio");
 
         hiloDemonio.setDaemon(true);
+
         hiloDemonio.start();
-        hilo.start();
+        hiloUsuario.start();
 
         try {
-            hilo.join();
-//            hiloDemonio.join();
+            hiloUsuario.join();
+            hiloDemonio.join();
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
@@ -21,27 +22,27 @@ public class DaemonThread {
         System.out.println("Hilos de usuario finalizados y por tanto, termina el hilo principal tras realizar el join");
 
     }
-    public static class Hilo implements Runnable
+    public static class Temporizador implements Runnable
     {
-        private int segundos=0;
+        private int cuentaSegundos=0;
 
-        public Hilo(int segundos)
+        public Temporizador(int cuentaSegundos)
         {
-            setSegundos(segundos);
+            setSegundos(cuentaSegundos);
         }
 
-        private void setSegundos(int segundos)
+        private void setSegundos(int cuentaSegundos)
         {
-            if (segundos<=0)
+            if (cuentaSegundos<=0)
                 throw new IllegalArgumentException("ERROR: El número de segundos no puede ser negativo.");
 
-            this.segundos=segundos;
+            this.cuentaSegundos=cuentaSegundos;
 
         }
         @Override
         public void run() {
 
-            for (int i=0; i<segundos;i++)
+            for (int i=0; i<cuentaSegundos;i++)
             {
                 try {
                     System.out.println("Soy la hebra " + Thread.currentThread().getName() + ". Me voy a dormir durante un segundo.");
