@@ -41,6 +41,7 @@ public class ScheduledExecutor {
         }
         catch (InterruptedException e) {
             System.out.println("ERROR: El hilo " + Thread.currentThread().getName() + " ha sido interrumpido.");
+            executor.shutdownNow();
             System.out.println(e.getMessage());
             hiloPrincipal.interrupt();
         }

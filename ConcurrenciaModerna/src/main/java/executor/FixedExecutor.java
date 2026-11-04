@@ -56,6 +56,7 @@ public class FixedExecutor {
         {
             System.out.println("ERROR: Se ha tratado de cargar una nueva tarea. Sin embargo, la cola de tareas ya no acepta más tareas.");
         }
+
         executor.shutdown();
         System.out.println("Apagado solicitado.No se aceptan nuevas tareas.");
 

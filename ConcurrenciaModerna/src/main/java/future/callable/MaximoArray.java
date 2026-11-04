@@ -33,12 +33,14 @@ public class MaximoArray {
         catch (InterruptedException e)
         {
             System.out.println("ERROR: El hilo principal ha sido interrumpido");
+            executor.shutdownNow();
             System.out.println(e.getMessage());
             Thread.currentThread().interrupt();
         }
         catch (ExecutionException e)
         {
             System.out.println("ERROR: Algo ha sucedido en la ejecución de la tarea del hilo.");
+
             System.out.println(e.getMessage());
         }
 

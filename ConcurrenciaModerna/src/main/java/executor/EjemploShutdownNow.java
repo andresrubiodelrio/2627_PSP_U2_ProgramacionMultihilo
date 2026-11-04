@@ -36,9 +36,7 @@ public class EjemploShutdownNow {
 
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                System.out.println("La tarea " +
-                        nombre + " ha sido interrumpida antes de terminar."
-                );
+                System.out.println("La tarea " + nombre + " ha sido interrumpida antes de terminar.");
 
             }
         }
@@ -49,7 +47,7 @@ public class EjemploShutdownNow {
         }
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args)  {
 
         // Solo puede ejecutar una tarea a la vez.
         ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -60,23 +58,30 @@ public class EjemploShutdownNow {
                 executor.execute(new Tarea("Tarea " + i));
             }
 
-            // El hilo principal espera un segundo antes del apagado.
-            Thread.sleep(1000);
+            // El hilo principal espera cinco segundos antes del apagado.
+            Thread.sleep(5000);
 
             System.out.println("Solicitando shutdownNow()...");
 
             // Recogemos las tareas que permanecían en cola.
             List<Runnable> noEjecutadas = executor.shutdownNow();
 
-            System.out.println("Número de tareas que no llegaron a iniciarse: "  + noEjecutadas.size());
+            System.out.println("Número de tareas que no han llegado a iniciarse: "  + noEjecutadas.size());
 
-            System.out.println("Lista de tareas no ejecutadas:");
+            System.out.println("Lista de tareas no iniciadas:");
 
             for (Runnable tarea : noEjecutadas) {
                 System.out.println("- " + tarea);
             }
 
-        } finally {
+        }
+        catch (InterruptedException e) {
+            System.out.println("El hilo principal ha sido interrumpido.");
+            executor.shutdownNow();
+            System.out.println(e.getMessage());
+            Thread.currentThread().interrupt();
+        }
+        finally {
             // También asegura el cierre si main se interrumpe.
             executor.shutdownNow();
         }

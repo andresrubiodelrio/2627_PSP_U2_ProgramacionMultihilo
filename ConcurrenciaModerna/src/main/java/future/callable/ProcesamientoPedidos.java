@@ -74,11 +74,11 @@ public class ProcesamientoPedidos {
                     nombreHilo, numeroPedido);
 
             // Fallo simulado durante el procesamiento.
-//            if (numeroPedido == 8) {
-//                throw new IllegalArgumentException(
-//                        "No se ha podido consultar el stock del pedido " + numeroPedido
-//                );
-//            }
+            if (numeroPedido == 8) {
+                throw new IllegalArgumentException(
+                        "No se ha podido consultar el stock del pedido " + numeroPedido
+                );
+            }
             // Simula el tiempo necesario para procesar el pedido.
             Thread.sleep(tiempoProceso);
 
@@ -140,6 +140,7 @@ public class ProcesamientoPedidos {
             catch (InterruptedException e)
             {
                 System.out.println("ERROR: El hilo principal ha sido interrumpido.");
+                executor.shutdownNow();
                 System.out.println(e.getMessage());
                 Thread.currentThread().interrupt();
             }

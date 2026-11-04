@@ -69,7 +69,7 @@ public class SingleExecutor {
             });
         }
 
-//        executor.shutdown();
-//        System.out.println("Shutdown solicitado. No se aceptan nuevas tareas.");
+        executor.shutdown();
+        System.out.println("Shutdown solicitado. No se aceptan nuevas tareas.");
     }
 }
