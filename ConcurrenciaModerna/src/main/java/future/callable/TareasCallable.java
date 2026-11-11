@@ -16,7 +16,7 @@ public class TareasCallable {
 
         Callable<Integer> tareaDobleDeNumero=()->{
             Random random=new Random();
-            int numeroAleatorio=1+ random.nextInt(10); //Número aleatorio entre 0 y 10
+            int numeroAleatorio=1+ random.nextInt(10); //Número aleatorio entre 1 y 10
             //Se tardan 3 segundos en generar el número aleatorio
             Thread.sleep(3000);
             System.out.println("Tarea 2: Generado el doble de: "+numeroAleatorio);
