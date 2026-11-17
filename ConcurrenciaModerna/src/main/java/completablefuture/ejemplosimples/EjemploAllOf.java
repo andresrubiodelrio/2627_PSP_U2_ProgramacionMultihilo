@@ -43,5 +43,6 @@ public class EjemploAllOf {
         System.out.println("Pedido 1: " + futuro1.join());
         System.out.println("Pedido 2: " + futuro2.join());
         System.out.println("Pedido 3: " + futuro3.join());
+        System.out.println("Importe total: " + (futuro1.join() + futuro2.join() + futuro3.join()));
     }
 }

@@ -11,7 +11,7 @@ public class EjemploSupplyAsync {
         // Primera etapa: calcular el importe.
         CompletableFuture<Double> futuroImporte =
                 CompletableFuture.supplyAsync(() ->
-                                pedido.calcularImporte()
+                            pedido.calcularImporte()
                 );
 
         double importe = futuroImporte.join();

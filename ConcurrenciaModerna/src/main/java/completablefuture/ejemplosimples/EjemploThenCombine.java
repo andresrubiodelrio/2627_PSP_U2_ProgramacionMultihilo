@@ -33,7 +33,10 @@ public class EjemploThenCombine {
                             System.out.println("Importe: " + importe);
                             System.out.println("Gastos de envío: " + gastosEnvio);
 
-                            return importe + gastosEnvio;
+                            if (importe>500)
+                                return importe; //No se le cobra gastos de envío.
+                            else
+                                return importe + gastosEnvio;
                         }
                 );
 

@@ -10,7 +10,9 @@ public class EjemploCancel {
         Pedido pedido = new Pedido(1, "Ana", 5, 40.0);
 
         CompletableFuture<Double> futuroImporte =
-                new CompletableFuture<>();
+                CompletableFuture.supplyAsync(() ->
+                    pedido.calcularImporte()
+                );
 
         boolean cancelado = futuroImporte.cancel(true);
 

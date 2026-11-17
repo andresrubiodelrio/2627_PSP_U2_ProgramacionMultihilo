@@ -8,16 +8,21 @@ public class EjemploExceptionally {
 
         Pedido pedido = new Pedido(1, "Ana", 5, 40.0);
 
-        boolean simularError = false;
+        boolean simularError = true;
+
+        CompletableFuture<Double> futuroImporte=CompletableFuture.supplyAsync(()->{
+            return pedido.calcularImporte();
+        });
 
         CompletableFuture<Double> futuroDescuento =
-                CompletableFuture.supplyAsync(() -> {
+                futuroImporte.thenApply(importe -> {
 
                     if (simularError) {
                         throw new IllegalStateException("No se pudo consultar el descuento.");
                     }
 
-                    double importe=pedido.calcularImporte();
+                    System.out.println("Importe: " + importe);
+
                     if ( importe>= 100) {
                         pedido.aplicarDescuento(10);
                     }
@@ -39,8 +44,9 @@ public class EjemploExceptionally {
                 });
 
         double descuento = futuroRecuperado.join();
+        double importe = futuroImporte.join();
 
-        double total = pedido.calcularImporte() - descuento;
+        double total = importe - descuento;
 
         System.out.println("Descuento: " + descuento);
         System.out.println("Total: " + total);
