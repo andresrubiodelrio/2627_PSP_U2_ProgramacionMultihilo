@@ -9,6 +9,7 @@ public class Banco {
 
     public void accederCuenta(String nombre) {
 
+        System.out.println(nombre + " está intentando acceder a la cuenta");
         if (lock.tryLock())
         {
             // intenta bloquear sin esperar
@@ -22,7 +23,7 @@ public class Banco {
                 lock.unlock();
             }
         } else {
-            System.out.println(nombre + " no pudo acceder. Recurso ocupado.");
+            System.out.println(nombre + " no puedes acceder a la cuenta en estos momentos. Otra persona está accediendo.");
         }
     }
 }

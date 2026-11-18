@@ -20,6 +20,13 @@ public class ContadorConLock {
     }
 
     public int getValor() {
-        return valor;
+        lock.lock();// Bloquea el recurso
+
+        try {
+            return valor;
+        } finally {
+            lock.unlock(); //Siempre se libera, incluso si hay excepción
+        }
+
     }
 }
