@@ -69,6 +69,8 @@ public class Productor implements Runnable{
         catch (InterruptedException e)
         {
             System.out.println(e.getMessage());
+            System.out.println("El hilo productor ha sido interrumpido.");
+            Thread.currentThread().interrupt();
         }
 
 

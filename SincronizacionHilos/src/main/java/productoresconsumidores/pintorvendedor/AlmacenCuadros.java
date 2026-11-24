@@ -16,12 +16,16 @@ public class AlmacenCuadros {
         }
         catch(InterruptedException e){
             System.out.println(e.getMessage());
+            System.out.println("El método guardar ha sido interrumpido.");
+            Thread.currentThread().interrupt();
         }
         System.out.println("PINTOR: Voy a pintar un nuevo cuadro");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             System.out.println("ERROR: No ha sido posible pintar un nuevo cuadro. Me he quedado sin pintura.");
+            System.out.println("El método guardar ha sido interrumpido.");
+            Thread.currentThread().interrupt();
         }
         //incrementa en 1 simulando que guarda un cuadro
         cuadros++;
@@ -40,6 +44,8 @@ public class AlmacenCuadros {
                 this.wait();
         }catch(InterruptedException e){
             System.out.println(e.getMessage());
+            System.out.println("El método sacar ha sido interrumpido.");
+            Thread.currentThread().interrupt();
         }
 
         System.out.println("VENDEDOR: Voy a vender un nuevo cuadro");
@@ -47,6 +53,8 @@ public class AlmacenCuadros {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             System.out.println("ERROR: No ha sido posible vender el nuevo cuadro. Buscaré más compradores.");
+            System.out.println("El método sacar ha sido interrumpido.");
+            Thread.currentThread().interrupt();
         }
         //decrementa 1 simulando que vende un cuadro
         cuadros--;

@@ -24,6 +24,7 @@ public class LectorLibro implements Runnable {
             } catch (InterruptedException e) {
                 System.out.println("ERROR: El hilo lector " + Thread.currentThread().getName() + " ha sido interrumpido.");
                 System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
             System.out.println(Thread.currentThread().getName()+": El libro ya ha sido completado. Ahora sí puedes leerlo.");
             System.out.println(Thread.currentThread().getName() + ": Genial. Me lo llevo y me pongo a leerlo");
@@ -32,6 +33,7 @@ public class LectorLibro implements Runnable {
             } catch (InterruptedException e) {
                 System.out.println("ERROR: El hilo lector ha sido interrumpido.");
                 System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
 
             System.out.println(Thread.currentThread().getName()+ ". Devuelvo el libro. Ya he terminado de leerlo.");

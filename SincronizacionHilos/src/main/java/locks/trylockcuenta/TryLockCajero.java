@@ -35,6 +35,7 @@ public class TryLockCajero {
                     } catch (InterruptedException e) {
                         System.out.println(nombreCliente + "ha sido interrumpido.");
                         System.out.println(e.getMessage());
+                        Thread.currentThread().interrupt();
                     } finally {
                         lock.unlock();
                     }
@@ -44,6 +45,7 @@ public class TryLockCajero {
             } catch (InterruptedException e) {
                 System.out.println("ERROR: Operación interrumpida");
                 System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
         }
     }

@@ -18,6 +18,8 @@ public class ProblemaSincronizacionMultipleConEstado {
         }
         catch (InterruptedException e)
         {
+            System.out.println(e.getMessage());
+            System.out.println("Hilo " + name + " interrumpido.");
             Thread.currentThread().interrupt();
         }
 
@@ -38,6 +40,8 @@ public class ProblemaSincronizacionMultipleConEstado {
         }
         catch (InterruptedException e)
         {
+            System.out.println(e.getMessage());
+            System.out.println("Hilo " + name + " interrumpido.");
             Thread.currentThread().interrupt();
         }
 

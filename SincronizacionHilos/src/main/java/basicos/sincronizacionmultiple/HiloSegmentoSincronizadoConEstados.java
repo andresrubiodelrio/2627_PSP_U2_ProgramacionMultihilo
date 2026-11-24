@@ -21,7 +21,10 @@ public class HiloSegmentoSincronizadoConEstados {
             }
             catch (InterruptedException e)
             {
+                System.out.println("Hilo " + name + " interrumpido.");
+                System.out.println(e.getMessage());
                 Thread.currentThread().interrupt();
+
             }
             contador1++;
         }

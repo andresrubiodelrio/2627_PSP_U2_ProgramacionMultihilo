@@ -81,6 +81,7 @@ public class Almacen {
         } catch (InterruptedException e) {
             System.out.println("ERROR: El hilo principal ha sido interrumpido.");
             System.out.println(e.getMessage());
+            Thread.currentThread().interrupt();
         }
 
     }

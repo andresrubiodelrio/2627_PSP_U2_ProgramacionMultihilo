@@ -56,6 +56,7 @@ public class ControlJardin {
             {
                 System.out.println("ERROR: El hilo principal ha sido interrumpido.");
                 System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
 
             System.out.println("Visitas: " + jardin.getVisitas());

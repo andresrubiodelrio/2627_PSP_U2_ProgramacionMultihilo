@@ -1,5 +1,7 @@
 package deadlock;
 
+import locks.trylockbanco.TryLockBanco;
+
 public class SolucionDeadLockOrdenConsistente {
 
 
@@ -32,6 +34,7 @@ public class SolucionDeadLockOrdenConsistente {
                 catch (InterruptedException e) {
                     System.out.println("ERROR: El método A ha sido interrumpido.");
                     System.out.println(e.getMessage());
+                    Thread.currentThread().interrupt();
                 }
 
                 System.out.println(Thread.currentThread().getName() + " intenta bloquear lock2...");
@@ -53,6 +56,7 @@ public class SolucionDeadLockOrdenConsistente {
                 catch (InterruptedException e) {
                     System.out.println("ERROR: El método B ha sido interrumpido.");
                     System.out.println(e.getMessage());
+                    Thread.currentThread().interrupt();
                 }
 
                 System.out.println(Thread.currentThread().getName() + " intenta bloquear lock2...");

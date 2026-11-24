@@ -16,6 +16,8 @@ public class BufferInt {
                 wait();
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
+                System.out.println("El método produce ha sido interrumpido.");
+                Thread.currentThread().interrupt();
             }
         }
 
@@ -39,6 +41,8 @@ public class BufferInt {
                 wait();
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
+                System.out.println("El método consume ha sido interrumpido.");
+                Thread.currentThread().interrupt();
             }
         }
 
@@ -50,6 +54,8 @@ public class BufferInt {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
+                System.out.println("El método consume ha sido interrumpido.");
+                Thread.currentThread().interrupt();
             }
         }
 

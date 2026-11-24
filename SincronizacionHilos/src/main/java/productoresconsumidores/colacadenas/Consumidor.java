@@ -69,6 +69,8 @@ public class Consumidor implements Runnable {
         catch (InterruptedException e)
         {
             System.out.println(e.getMessage());
+            System.out.println("El hilo consumidor ha sido interrumpido.");
+            Thread.currentThread().interrupt();
         }
 
     }

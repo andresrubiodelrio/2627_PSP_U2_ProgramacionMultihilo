@@ -36,6 +36,7 @@ public class ReadWriteLocksBiblioteca {
             } catch (InterruptedException e) {
                 System.out.println("ERROR: Hilo lector ha sido interrumpido.");
                 System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             } finally {
                 rwLock.readLock().unlock();
             }
@@ -51,6 +52,7 @@ public class ReadWriteLocksBiblioteca {
             } catch (InterruptedException e) {
                 System.out.println("ERROR: Hilo escritor ha sido interrumpido.");
                 System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             } finally {
                 rwLock.writeLock().unlock();
             }

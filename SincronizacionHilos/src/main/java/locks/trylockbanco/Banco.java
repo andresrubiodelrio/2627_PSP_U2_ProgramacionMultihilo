@@ -19,6 +19,7 @@ public class Banco {
             } catch (InterruptedException e) {
                 System.out.println("ERROR: Hilo " + nombre + " interrumpido");
                 System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             } finally {
                 lock.unlock();
             }

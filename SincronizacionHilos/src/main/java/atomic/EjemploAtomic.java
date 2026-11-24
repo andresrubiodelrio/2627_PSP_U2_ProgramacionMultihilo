@@ -23,6 +23,8 @@ public class EjemploAtomic {
             t2.join();
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
+            System.out.println("Hilo principal interrumpido.");
+            Thread.currentThread().interrupt();
         }
 
 

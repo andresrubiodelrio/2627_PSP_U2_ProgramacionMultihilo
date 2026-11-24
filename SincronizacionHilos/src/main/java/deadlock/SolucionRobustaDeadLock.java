@@ -49,7 +49,10 @@ public class SolucionRobustaDeadLock {
                     System.out.println(Thread.currentThread().getName() + " NO pudo bloquear lock1");
                 }
             } catch (InterruptedException e) {
+                System.out.println("El método A ha sido interrumpido.");
+                System.out.println(e.getMessage());
                 Thread.currentThread().interrupt();
+
             }
         }
 
@@ -75,6 +78,8 @@ public class SolucionRobustaDeadLock {
                     System.out.println(Thread.currentThread().getName() + " NO pudo bloquear lock2");
                 }
             } catch (InterruptedException e) {
+                System.out.println("El método B ha sido interrumpido.");
+                System.out.println(e.getMessage());
                 Thread.currentThread().interrupt();
             }
         }

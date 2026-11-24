@@ -24,6 +24,7 @@ public class EscritorLibro implements Runnable {
             } catch (InterruptedException e) {
                 System.out.println("ERROR: El hilo escritor ha sido interrumpido");
                 System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
 
             libro.setEstaCompletado(true);

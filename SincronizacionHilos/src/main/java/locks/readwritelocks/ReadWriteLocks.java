@@ -14,7 +14,7 @@ public class ReadWriteLocks {
     //Creamos el lock para lectura
     private static Lock readLock=readWriteLock.readLock();
 
-    //Creamos el lock para lectura
+    //Creamos el lock para escritura
     private static Lock writeLock=readWriteLock.writeLock();
 
     private static List<Integer> lista=new ArrayList<>();
@@ -52,6 +52,7 @@ public class ReadWriteLocks {
                 {
                     System.out.println("ERROR: Hilo escritor ha sido interrumpido.");
                     System.out.println(e.getMessage());
+                    Thread.currentThread().interrupt();
                 }
             }
         }
@@ -88,6 +89,7 @@ public class ReadWriteLocks {
                 {
                     System.out.println("ERROR: Hilo lector ha sido interrumpido.");
                     System.out.println(e.getMessage());
+                    Thread.currentThread().interrupt();
                 }
             }
         }

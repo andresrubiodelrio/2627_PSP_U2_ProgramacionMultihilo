@@ -23,6 +23,8 @@ public class Panadero implements Runnable{
             }
             catch (InterruptedException e) {
                 System.out.println(e.getMessage());
+                System.out.println("El panadero ha sido interrumpido.");
+                Thread.currentThread().interrupt();
             }
         }
 

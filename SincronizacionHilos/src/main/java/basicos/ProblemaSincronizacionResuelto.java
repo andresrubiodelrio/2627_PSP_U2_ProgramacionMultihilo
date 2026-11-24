@@ -28,6 +28,8 @@ public class ProblemaSincronizacionResuelto {
             t2.join();
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
+            System.out.println("Hilo principal interrumpido.");
+            Thread.currentThread().interrupt();
         }
 
         System.out.println("Valor de contador: " + contador);

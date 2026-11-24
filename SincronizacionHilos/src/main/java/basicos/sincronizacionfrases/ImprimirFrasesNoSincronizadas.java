@@ -37,6 +37,8 @@ public class ImprimirFrasesNoSincronizadas implements Runnable {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
+                System.out.println("Hilo interrumpido.");
+                Thread.currentThread().interrupt();
             }
         System.out.println(frase2);
     }

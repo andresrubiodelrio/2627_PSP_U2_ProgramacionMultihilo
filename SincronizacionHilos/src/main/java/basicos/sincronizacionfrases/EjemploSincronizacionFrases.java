@@ -23,7 +23,9 @@ public class EjemploSincronizacionFrases {
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
+            System.out.println("Hilo principal interrumpido.");
+            Thread.currentThread().interrupt();
         }
 
         //System.out.println(th3.getState());

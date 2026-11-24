@@ -31,6 +31,8 @@ public class SumaParalelaVector {
             t2.join();
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
+            System.out.println("El hilo principal ha sido interrumpido.");
+            Thread.currentThread().interrupt();
         }
 
         System.out.println("La suma de los valores del vector es: " + suma);

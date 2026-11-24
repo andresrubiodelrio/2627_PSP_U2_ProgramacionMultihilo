@@ -11,6 +11,8 @@ public class Frase {
             Thread.sleep(500);
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
+            System.out.println("Hilo de la Frase interrumpido.");
+            Thread.currentThread().interrupt();
         }
         System.out.println(frase2);
 

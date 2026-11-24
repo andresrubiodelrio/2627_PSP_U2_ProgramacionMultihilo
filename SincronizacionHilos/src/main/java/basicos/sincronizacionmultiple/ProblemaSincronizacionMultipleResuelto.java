@@ -24,6 +24,8 @@ public class ProblemaSincronizacionMultipleResuelto {
             t2.join();
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
+            System.out.println("Hilo principal interrumpido.");
+            Thread.currentThread().interrupt();
         }
 
         System.out.println("Valor de contador1: " + tarea.getContador1());

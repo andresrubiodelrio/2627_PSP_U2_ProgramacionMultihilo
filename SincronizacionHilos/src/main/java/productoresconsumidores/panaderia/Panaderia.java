@@ -13,6 +13,8 @@ public class Panaderia {
                 wait();
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
+                System.out.println("El método hornear ha sido interrumpido.");
+                Thread.currentThread().interrupt();
             }
         }
         this.pan=masa;
@@ -29,6 +31,8 @@ public class Panaderia {
                 wait();
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
+                System.out.println("El método consumir ha sido interrumpido.");
+                Thread.currentThread().interrupt();
             }
         }
         System.out.println("Cliente consume pan " + this.pan);
