@@ -127,7 +127,9 @@ public class SumaMatriz {
             //Ningún hilo controlado llamará a este método hasta que no haya
             //completado la suma de su tanda
         } catch (InterruptedException ex) {
+            System.out.println("Hilo principal ha sido interrumpido.");
             System.out.println(ex.getMessage());
+            Thread.currentThread().interrupt();
         }
 
         //cuando se reanuda el hilo principal, todos los hilos controlados

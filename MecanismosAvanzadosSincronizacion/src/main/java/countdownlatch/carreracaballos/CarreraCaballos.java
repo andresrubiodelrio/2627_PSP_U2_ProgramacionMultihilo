@@ -23,7 +23,9 @@ public class CarreraCaballos {
 
         }
         catch (InterruptedException e) {
+            System.out.println("Hilo principal interrumpido.");
             System.out.println(e.getMessage());
+            Thread.currentThread().interrupt();
         }
         finally
         {
@@ -59,7 +61,9 @@ public class CarreraCaballos {
                 System.out.println("¡Corredor " + dorsal + " ha salido disparado!");
 
             } catch (InterruptedException e) {
+                System.out.println("Corredor " + dorsal + " interrumpido.");
                 System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
         }
     }

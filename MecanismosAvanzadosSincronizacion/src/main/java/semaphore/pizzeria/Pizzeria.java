@@ -31,7 +31,7 @@ public class Pizzeria {
                     horno.acquire();
 
                     // B. Sección Crítica (Poner la pizza)
-                    Thread.sleep(3000); // Tiempo de cocinado
+                    Thread.sleep(1000); // Tiempo de cocinado
                     String pizza = "Pizza " + idPizza++;
 
                     synchronized (cerrojoMostrador) {
@@ -68,7 +68,7 @@ public class Pizzeria {
                     mostrador.acquire();
 
                     // B. Sección Crítica (Coger la pizza)
-                    Thread.sleep(3000); // Tiempo de reparto (es más lento que cocinar)
+                    Thread.sleep(1000); // Tiempo de reparto (es más lento que cocinar)
                     String pizza;
 
                     synchronized (cerrojoMostrador) {

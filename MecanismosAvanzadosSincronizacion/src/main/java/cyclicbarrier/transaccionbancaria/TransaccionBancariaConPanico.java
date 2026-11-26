@@ -71,6 +71,8 @@ public class TransaccionBancariaConPanico {
             } catch (InterruptedException e) {
                 // Ocurre si este hilo fue interrumpido
                 System.out.println("[" + name + "] Interrumpido. Rollback local.");
+                System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             } catch (TimeoutException e) {
                 // Ocurre si esperamos demasiado a los otros
                 System.out.println("[" + name + "] Timeout esperando a los otros. Rollback local.");
@@ -79,8 +81,6 @@ public class TransaccionBancariaConPanico {
                 // Ocurre si OTRO hilo rompió la barrera o falló.
                 System.err.println(" [" + name + "] ¡La barrera se rompió! Otro sistema falló. HACIENDO ROLLBACK.");
                 performRollback();
-            } catch (RuntimeException e) {
-                // Capturamos el error simulado
             }
         }
 

@@ -94,7 +94,9 @@ public class BusquedaSincronizada {
         try {
             latch.await();
         } catch (InterruptedException e) {
+            System.out.println("Hilo principal ha sido interrumpido.");
             System.out.println(e.getMessage());
+            Thread.currentThread().interrupt();
         }
 
         // Mostrar resultado final

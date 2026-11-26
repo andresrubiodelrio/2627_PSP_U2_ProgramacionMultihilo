@@ -56,9 +56,9 @@ public class TransaccionBancaria {
                     // ETERNAMENTE si no usamos timeouts o gestión de interrupciones.
 
                     // Para romper la barrera explícitamente y avisar a los otros:
-                    //Thread.currentThread().interrupt();
+                    Thread.currentThread().interrupt();
                     // O simplemente no llamar a await() y dejar que los otros tengan timeout.
-                    throw new RuntimeException("Fallo interno");
+                    //throw new RuntimeException("Fallo interno");
                 }
                 else {
                     System.out.println("[" + name + "] Validación OK. Esperando en barrera...");
@@ -74,6 +74,8 @@ public class TransaccionBancaria {
             } catch (InterruptedException e) {
                 // Ocurre si este hilo fue interrumpido
                 System.out.println("[" + name + "] Interrumpido. Rollback local.");
+                System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             } catch (TimeoutException e) {
                 // Ocurre si esperamos demasiado a los otros
                 System.out.println("[" + name + "] Timeout esperando a los otros. Rollback local.");
@@ -82,8 +84,6 @@ public class TransaccionBancaria {
                 // Ocurre si OTRO hilo rompió la barrera o falló.
                 System.err.println(" [" + name + "] ¡La barrera se rompió! Otro sistema falló. HACIENDO ROLLBACK.");
                 performRollback();
-            } catch (RuntimeException e) {
-                // Capturamos el error simulado
             }
         }
 

@@ -74,7 +74,7 @@ public class ServidorBoot {
 
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
-                System.out.println(" El hilo -> " + nombre + " ha sido interrumpido.");
+                System.out.println(" El servicio -> " + nombre + " ha sido interrumpido.");
                 Thread.currentThread().interrupt();
             } finally {
                 // 3. ¡CRUCIAL! Decrementamos el contador pase lo que pase
